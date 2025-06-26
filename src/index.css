@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+:root {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6366f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8b5cf6;
+}
+
+/* Particle animation styles */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #6366f1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Mathematical equation styles */
+.equation {
+  font-family: 'JetBrains Mono', monospace;
+  color: #06b6d4;
+  opacity: 0.3;
+  user-select: none;
+  pointer-events: none;
+}
