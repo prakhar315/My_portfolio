@@ -50,62 +50,107 @@ const Resume = () => {
 
     return (
       <motion.div
-        initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: index * 0.2 }}
-        className={`flex items-center ${isLeft ? 'flex-row' : 'flex-row-reverse'} mb-12`}
+        className="mb-12"
       >
-        {/* Content */}
-        <div className={`w-5/12 ${isLeft ? 'text-right pr-8' : 'text-left pl-8'}`}>
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700 hover:border-quantum/50 transition-all duration-300"
-          >
-            <div className="flex items-center space-x-2 mb-3">
-              <span className={`px-3 py-1 text-xs rounded-full ${
-                item.type === 'education' ? 'bg-blue-900 text-blue-300' :
-                item.type === 'experience' ? 'bg-green-900 text-green-300' :
-                'bg-purple-900 text-purple-300'
-              }`}>
-                {item.type.toUpperCase()}
-              </span>
-              <span className="text-quantum font-mono text-sm">{item.year}</span>
-            </div>
-            
-            <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-            <p className="text-physics font-semibold mb-3">{item.organization}</p>
-            <p className="text-gray-300 mb-4">{item.description}</p>
-            
-            <ul className="space-y-1">
-              {item.achievements.map((achievement, i) => (
-                <li key={i} className="text-sm text-gray-400 flex items-center">
-                  <span className="w-1 h-1 bg-quantum rounded-full mr-2"></span>
-                  {achievement}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
-
-        {/* Timeline Node */}
-        <div className="w-2/12 flex justify-center">
-          <div className="relative">
+        {/* Mobile Layout (default) */}
+        <div className="flex md:hidden">
+          {/* Timeline Node */}
+          <div className="flex flex-col items-center mr-4">
             <motion.div
               whileHover={{ scale: 1.2 }}
-              className="w-12 h-12 bg-gradient-to-r from-quantum to-physics rounded-full flex items-center justify-center border-4 border-gray-900 z-10 relative"
+              className="w-10 h-10 bg-gradient-to-r from-quantum to-physics rounded-full flex items-center justify-center border-4 border-gray-900 z-10 relative"
             >
-              <Icon className="w-6 h-6 text-white" />
+              <Icon className="w-5 h-5 text-white" />
             </motion.div>
-            
+
             {/* Timeline Line */}
             {!isLast && (
-              <div className="absolute top-12 left-1/2 transform -translate-x-1/2 w-0.5 h-20 bg-gradient-to-b from-quantum to-physics"></div>
+              <div className="w-0.5 h-16 bg-gradient-to-b from-quantum to-physics mt-2"></div>
             )}
+          </div>
+
+          {/* Content */}
+          <div className="flex-1">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              className="bg-gray-800/50 backdrop-blur-sm p-4 rounded-xl border border-gray-700 hover:border-quantum/50 transition-all duration-300"
+            >
+              <div className="flex flex-wrap items-center gap-2 mb-3">
+                <span className="px-2 py-1 text-xs rounded-full bg-blue-900 text-blue-300">
+                  {item.type.toUpperCase()}
+                </span>
+                <span className="text-quantum font-mono text-sm">{item.year}</span>
+              </div>
+
+              <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+              <p className="text-physics font-semibold mb-2 text-sm">{item.organization}</p>
+              <p className="text-gray-300 mb-3 text-sm">{item.description}</p>
+
+              <ul className="space-y-1">
+                {item.achievements.map((achievement, i) => (
+                  <li key={i} className="text-xs text-gray-400 flex items-start">
+                    <span className="w-1 h-1 bg-quantum rounded-full mr-2 mt-1.5 flex-shrink-0"></span>
+                    <span>{achievement}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
         </div>
 
-        {/* Empty space for alternating layout */}
-        <div className="w-5/12"></div>
+        {/* Desktop Layout (md and up) */}
+        <div className={`hidden md:flex items-center ${isLeft ? 'flex-row' : 'flex-row-reverse'}`}>
+          {/* Content */}
+          <div className={`w-5/12 ${isLeft ? 'text-right pr-8' : 'text-left pl-8'}`}>
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700 hover:border-quantum/50 transition-all duration-300"
+            >
+              <div className="flex items-center space-x-2 mb-3">
+                <span className="px-3 py-1 text-xs rounded-full bg-blue-900 text-blue-300">
+                  {item.type.toUpperCase()}
+                </span>
+                <span className="text-quantum font-mono text-sm">{item.year}</span>
+              </div>
+
+              <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+              <p className="text-physics font-semibold mb-3">{item.organization}</p>
+              <p className="text-gray-300 mb-4">{item.description}</p>
+
+              <ul className="space-y-1">
+                {item.achievements.map((achievement, i) => (
+                  <li key={i} className="text-sm text-gray-400 flex items-center">
+                    <span className="w-1 h-1 bg-quantum rounded-full mr-2"></span>
+                    {achievement}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+
+          {/* Timeline Node */}
+          <div className="w-2/12 flex justify-center">
+            <div className="relative">
+              <motion.div
+                whileHover={{ scale: 1.2 }}
+                className="w-12 h-12 bg-gradient-to-r from-quantum to-physics rounded-full flex items-center justify-center border-4 border-gray-900 z-10 relative"
+              >
+                <Icon className="w-6 h-6 text-white" />
+              </motion.div>
+
+              {/* Timeline Line */}
+              {!isLast && (
+                <div className="absolute top-12 left-1/2 transform -translate-x-1/2 w-0.5 h-20 bg-gradient-to-b from-quantum to-physics"></div>
+              )}
+            </div>
+          </div>
+
+          {/* Empty space for alternating layout */}
+          <div className="w-5/12"></div>
+        </div>
       </motion.div>
     );
   };
