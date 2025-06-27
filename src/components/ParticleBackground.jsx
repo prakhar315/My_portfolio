@@ -18,7 +18,9 @@ const ParticleBackground = () => {
 
     // Particle system
     const particles = [];
-    const particleCount = 50;
+    // Reduce particle count on mobile for better performance
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 25 : 50;
 
     class Particle {
       constructor() {

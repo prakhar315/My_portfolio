@@ -33,11 +33,11 @@ const Hero = () => {
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Floating equations */}
-      {equations.map((equation, index) => (
+      {equations.slice(0, window.innerWidth < 768 ? 4 : 7).map((equation, index) => (
         <motion.div
           key={index}
-          className="absolute text-math opacity-20 text-lg font-mono"
-          initial={{ 
+          className="absolute text-math opacity-20 text-sm md:text-lg font-mono hidden sm:block"
+          initial={{
             x: Math.random() * window.innerWidth,
             y: Math.random() * window.innerHeight,
             rotate: Math.random() * 360

@@ -177,7 +177,7 @@ const Resume = () => {
           </p>
           
           <motion.a
-            href="https://drive.google.com/file/d/1YVPvVKbbMmMMAGCToqANK_H44aedf1ek/view?usp=sharing"
+            href="https://drive.google.com/file/d/151dYWsAJj839_TXcrzf0SjTEBHGLqLh5/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(99, 102, 241, 0.5)" }}

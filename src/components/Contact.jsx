@@ -90,7 +90,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 border border-gray-700"
+            className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 md:p-8 border border-gray-700"
           >
             <h3 className="text-2xl font-bold text-white mb-6">Send Message</h3>
             
@@ -190,7 +190,7 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-8"
           >
-            <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 border border-gray-700">
+            <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 md:p-8 border border-gray-700">
               <h3 className="text-2xl font-bold text-white mb-6">Get In Touch</h3>
               <p className="text-gray-300 mb-6 leading-relaxed">
                 I'm always excited to discuss new opportunities, innovative projects, 
